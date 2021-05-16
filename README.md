@@ -12,6 +12,8 @@ They do not directly map to native os threads, because of that they are very fas
 
 A coroutine is basically a call chain of suspend funs. Suspension is totally under your control: you just have to call suspendCoroutine. You'll get a callback object so you can call its resume method and get back to where you suspended.
 
-The two most important building blocks to create/start/run new coroutines are _coroutine scope_ and _coroutine builders_.
-Coroutine scope consists of all the machinery required to run coroutine, for example, it knows where (on which thread) to run coroutine and coroutine builders are used to create a new coroutine
+The two most important building blocks to create/start/run new coroutines are __coroutine scope__ and __coroutine builders__.
+
+__Coroutine scope__ consists of all the machinery required to run coroutine, for example, it knows where (on which thread) to run coroutine and coroutine builders are used to create a new coroutine.
+If I have to give an analogy with threads, coroutine scope can be seen as Java’s ExecutorService and __coroutine builders__ are factories to create Runnable instances.
 
