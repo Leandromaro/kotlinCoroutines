@@ -21,9 +21,7 @@ suspend fun delayCoroutine(message:String){
     println("Tarea 3 " + Thread.currentThread().name)
 }
 
-fun suspendExample(message:String){
+fun suspendExample(message:String) = runBlocking{
     println("Tarea 3 " + Thread.currentThread().name)
-    runBlocking {
-        delayCoroutine("Tarea 4")
-    }
+    delayCoroutine("Tarea 4")
 }
