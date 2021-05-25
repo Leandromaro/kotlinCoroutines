@@ -17,7 +17,33 @@ The two most important building blocks to create/start/run new coroutines are __
 __Coroutine scope__ consists of all the machinery required to run coroutine, for example, it knows where (on which thread) to run coroutine and coroutine builders are used to create a new coroutine.
 If I have to give an analogy with threads, coroutine scope can be seen as Java’s ExecutorService and __coroutine builders__ are factories to create Runnable instances.
 
+## Coroutines Suspend fun
 
+Using the keyword __suspend__ we create a function that can be suspended and reactive in the near future, without blocking the main thread that we are using.
+
+This kind of functions only can be called from another coroutine or another suspend function.
+````
+suspend fun delayCoroutine(message:String){
+    delay(timeMillis = 5000)
+    println("Tarea 3 " + Thread.currentThread().name)
+}
+````
+
+## How to create coroutines
+
+### RunBlocking 
+
+It allows us to run a new coroutine and block the current thread until is finish.
+````
+fun suspendExample(message:String){
+    println("Tarea 3 " + Thread.currentThread().name)
+    runBlocking {
+        // If it wasn't for runBlocking 
+        // a call from here to a suspend fun would be forbiden
+        delayCoroutine("Tarea 4")
+    }
+}
+````
 ## Coroutine Scope Builders
 CoroutineScope is an interface that has a single abstract property called coroutineContext.
 
