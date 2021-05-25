@@ -33,7 +33,9 @@ suspend fun delayCoroutine(message:String){
 
 ### RunBlocking 
 
-It allows us to run a new coroutine and block the current thread until is finish.
+It allows us to run a new coroutine.
+It runs in the same main thread that our process is running. 
+While it is running it blocks the current thread until is finish.
 ````
 fun suspendExample(message:String){
     println("Tarea 3 " + Thread.currentThread().name)
